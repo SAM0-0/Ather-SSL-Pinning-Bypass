@@ -4,13 +4,13 @@
 <svg width="600" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#00ff88;stop-opacity:1" >
+      <stop offset="0%" style="stop-color:#00ff88;stop-opacity:1">
         <animate attributeName="stop-color" values="#00ff88;#00aaff;#ff00aa;#00ff88" dur="4s" repeatCount="indefinite"/>
       </stop>
-      <stop offset="50%" style="stop-color:#00aaff;stop-opacity:1" >
+      <stop offset="50%" style="stop-color:#00aaff;stop-opacity:1">
         <animate attributeName="stop-color" values="#00aaff;#ff00aa;#00ff88;#00aaff" dur="4s" repeatCount="indefinite"/>
       </stop>
-      <stop offset="100%" style="stop-color:#ff00aa;stop-opacity:1" >
+      <stop offset="100%" style="stop-color:#ff00aa;stop-opacity:1">
         <animate attributeName="stop-color" values="#ff00aa;#00ff88;#00aaff;#ff00aa" dur="4s" repeatCount="indefinite"/>
       </stop>
     </linearGradient>
@@ -52,13 +52,13 @@
   
   <!-- Main Title -->
   <text x="300" y="85" text-anchor="middle" font-family="monospace" font-size="28" font-weight="bold" fill="url(#grad)" filter="url(#glow)">
-    ATHER SSL BYPASS
+    SECURITY BYPASS TOOLKIT
     <animate attributeName="opacity" values="1;0.7;1" dur="3s" repeatCount="indefinite"/>
   </text>
   
   <!-- Subtitle -->
   <text x="300" y="115" text-anchor="middle" font-family="monospace" font-size="14" fill="#8b949e">
-    Frida Security Bypass Toolkit
+    Advanced Frida Instrumentation
   </text>
   
   <!-- Animated dots -->
@@ -73,35 +73,35 @@
   </circle>
 </svg>
 
+<br />
+
 <!-- Badges -->
-<a href="https://frida.re">
-  <img src="https://img.shields.io/badge/FRIDA-17.x-00FF88?style=for-the-badge&logo=frida&logoColor=white"/>
-</a>
-<a href="https://github.com/SAM0-0/Ather-SSL-Pinning-Bypass/blob/main/LICENSE">
-  <img src="https://img.shields.io/badge/LICENSE-MIT-ff00aa?style=for-the-badge"/>
-</a>
-<a href="https://github.com/SAM0-0/Ather-SSL-Pinning-Bypass">
-  <img src="https://img.shields.io/badge/ANDROID-ROOTED-ff4444?style=for-the-badge&logo=android&logoColor=white"/>
-</a>
+<p align="center">
+  <a href="https://frida.re">
+    <img src="https://img.shields.io/badge/FRIDA-17.x-00FF88?style=for-the-badge&logo=frida&logoColor=white" alt="Frida Version">
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/LICENSE-MIT-ff00aa?style=for-the-badge" alt="License">
+  </a>
+  <img src="https://img.shields.io/badge/ANDROID-ROOTED-ff4444?style=for-the-badge&logo=android&logoColor=white" alt="Android Root Required">
+</p>
 
-<br/>
-
-**Complete security bypass for Ather Mobile App — root detection, Frida detection, and SSL pinning.**
+**Complete security bypass for Target Mobile App — including root detection, Frida detection, and SSL pinning.**
 
 **Tested on app version:** `13.3.0`
 
-> **Requires rooted Android device with frida-server running.**
+> ⚠️ **Requires a rooted Android device with `frida-server` running.**
 
 </div>
 
 ---
 
-## ⚡ What's Inside
+## ⚡ Features Overview
 
 ### 🔓 Root Detection Bypass
 
-| Method | Result |
-|--------|--------|
+| Target Method | Spoofed Result |
+| :--- | :--- |
 | `performSecurityCheck` | Clean |
 | `checkRootBinaries` | `false` |
 | `checkRootPackages` | `false` |
@@ -113,8 +113,8 @@
 
 ### 🕵️ Frida Detection Bypass
 
-| Method | Result |
-|--------|--------|
+| Target Method | Status |
+| :--- | :--- |
 | `checkFridaProcesses` | `false` |
 | `checkFridaPorts` | `false` |
 | `checkFridaArtifacts` | `false` |
@@ -126,78 +126,19 @@
 
 ## 🛡️ SSL Pinning Bypass
 
-| Category | Hooks |
-|----------|-------|
+Our instrumentation targets multiple layers of certificate validation to ensure a seamless proxy experience:
+
+| Category | Intercepted Hooks |
+| :--- | :--- |
 | **OkHttp3** | `CertificatePinner`, `check$okhttp`, `OkHostnameVerifier` |
 | **Android Platform** | `TrustManagerImpl`, `X509TrustManager`, `SSLContext.init` |
-| **Custom Hooks** | `HostnameVerifier`, `WebViewClient`, `FileInputStream` |
+| **Custom Implementations** | `HostnameVerifier`, `WebViewClient`, `FileInputStream` |
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start Guide
 
-### 1. Install Frida
+### 1. Install Frida Dependencies
+Ensure you have the latest Frida tools installed on your host machine:
 ```bash
 pip install frida-tools frida
-```
-
-### 2. Push frida-server to device
-```bash
-adb push frida-server-17.x-android-$(adb shell getprop ro.product.cpu.abi) /data/local/tmp/
-adb shell "chmod 755 /data/local/tmp/frida-server"
-adb shell "/data/local/tmp/frida-server &"
-```
-
-### 3. Run the bypass
-```bash
-frida -U -f com.athermobileapp -l ather-bypass.js
-```
-
-**Or attach to running app:**
-```bash
-frida -U com.athermobileapp -l ather-bypass.js
-```
-
----
-
-## 📸 Screenshot
-
-<div align="center">
-
-![Frida Bypass Screenshot](assets/1.png)
-
-</div>
-
----
-
-## 📁 File Hooks Summary
-
-| Hook | Target | Effect |
-|------|--------|--------|
-| `File.exists()` | su binaries, frida-server | Returns `false` |
-| `File.canExecute()` | su binaries | Returns `false` |
-| `System.getenv("PATH")` | PATH variable | Strips `/su` paths |
-| `FileReader` | SELinux enforce | Spoofs to `1` (enforcing) |
-| `BufferedReader` | /proc/mounts | Changes `rw` → `ro` |
-| `FileInputStream` | /proc/net/tcp | Filters Frida ports |
-| `Runtime.exec` | ps commands | Intercepts |
-| `String.contains` | frida/xposed/substrate | Returns `false` |
-
----
-
-## ⚠️ Disclaimer
-
-> **This tool is for educational and authorized security testing purposes only.**
-> Unauthorized access to computer systems is illegal.
-> Always obtain proper authorization before testing.
-
----
-
-<div align="center">
-
-**Made with 💚 by [SAM0-0](https://github.com/SAM0-0)**
-
-<sub>Star this repo if it helped you!</sub>
-
-</div>
-	
