@@ -2,6 +2,8 @@
 
 A Frida script that bypasses **root detection**, **Frida detection**, and **SSL pinning** in the **Ather Mobile App** (`com.athermobileapp`).
 
+**Tested on app version:** `13.3.0`
+
 ## Features
 
 ### Root Detection Bypass
