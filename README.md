@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- Animated Banner SVG -->
-<svg width="600" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+<svg width="100%" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" style="max-width:600px; display:block; margin:0 auto;">
   <defs>
     <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#00ff88;stop-opacity:1" >
