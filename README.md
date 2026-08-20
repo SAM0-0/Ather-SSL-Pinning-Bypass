@@ -100,27 +100,27 @@
 
 ### 🔓 Root Detection Bypass
 
-| Method | Result |
+| Method | Status |
 |--------|--------|
-| `performSecurityCheck` | Clean |
-| `checkRootBinaries` | `false` |
-| `checkRootPackages` | `false` |
-| `checkSuExistence` | `false` |
-| `checkDangerousProps` | `false` |
-| `isSystemPartitionReadWrite` | `false` |
-| `checkSELinuxStatus` | `false` |
-| `isEnvironmentSuspect` | `false` |
+| `performSecurityCheck` | Bypassed |
+| `checkRootBinaries` | Bypassed |
+| `checkRootPackages` | Bypassed |
+| `checkSuExistence` | Bypassed |
+| `checkDangerousProps` | Bypassed |
+| `isSystemPartitionReadWrite` | Bypassed |
+| `checkSELinuxStatus` | Bypassed |
+| `isEnvironmentSuspect` | Bypassed |
 
 ### 🕵️ Frida Detection Bypass
 
-| Method | Result |
+| Method | Status |
 |--------|--------|
-| `checkFridaProcesses` | `false` |
-| `checkFridaPorts` | `false` |
-| `checkFridaArtifacts` | `false` |
-| `String.contains` hooks | Active |
-| `/proc/net/tcp` filter | Active |
-| `Runtime.exec` intercept | Active |
+| `checkFridaProcesses` | Bypassed |
+| `checkFridaPorts` | Bypassed |
+| `checkFridaArtifacts` | Bypassed |
+| `String.contains` hooks | Bypassed |
+| `/proc/net/tcp` filter | Bypassed |
+| `Runtime.exec` intercept | Bypassed |
 
 ---
 
