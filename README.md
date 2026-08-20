@@ -46,7 +46,7 @@ A Frida script that bypasses **root detection**, **Frida detection**, and **SSL 
 ## Usage
 
 ```bash
-frida -U -f com.athermobileapp -l ather-bypass.js --no-pause
+frida -U -f com.athermobileapp -l ather-bypass.js
 ```
 
 Or attach to a running app:
@@ -56,6 +56,8 @@ frida -U com.athermobileapp -l ather-bypass.js
 ```
 
 ## Console Output
+
+![Frida Bypass Screenshot](assets/bypass-screenshot.png)
 
 ```
 ========================================
