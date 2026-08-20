@@ -21,9 +21,6 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <filter id="shadow">
-      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#00ff88" flood-opacity="0.5"/>
-    </filter>
   </defs>
   
   <!-- Background -->
@@ -64,14 +61,6 @@
     Frida Security Bypass Toolkit
   </text>
   
-  <!-- Version badge -->
-  <rect x="240" y="130" width="120" height="24" rx="12" fill="#00ff8822" stroke="#00ff88" stroke-width="1">
-    <animate attributeName="stroke-opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
-  </rect>
-  <text x="300" y="147" text-anchor="middle" font-family="monospace" font-size="12" fill="#00ff88">
-    v13.3.0 COMPATIBLE
-  </text>
-  
   <!-- Animated dots -->
   <circle cx="50" cy="180" r="2" fill="#00ff88">
     <animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite"/>
@@ -88,9 +77,6 @@
 <a href="https://frida.re">
   <img src="https://img.shields.io/badge/FRIDA-17.x-00FF88?style=for-the-badge&logo=frida&logoColor=white"/>
 </a>
-<a href="https://github.com/SAM0-0/Ather-SSL-Pinning-Bypass">
-  <img src="https://img.shields.io/badge/VERSION-13.3.0-00aaff?style=for-the-badge"/>
-</a>
 <a href="https://github.com/SAM0-0/Ather-SSL-Pinning-Bypass/blob/main/LICENSE">
   <img src="https://img.shields.io/badge/LICENSE-MIT-ff00aa?style=for-the-badge"/>
 </a>
@@ -102,86 +88,49 @@
 
 **Complete security bypass for Ather Mobile App — root detection, Frida detection, and SSL pinning.**
 
+**Tested on app version:** `13.3.0`
+
+> **Requires rooted Android device with frida-server running.**
+
 </div>
 
 ---
 
 ## ⚡ What's Inside
 
-<table>
-<tr>
-<td width="50%" valign="top">
-
 ### 🔓 Root Detection Bypass
-```
-✅ performSecurityCheck    → Clean
-✅ checkRootBinaries       → false
-✅ checkRootPackages       → false
-✅ checkSuExistence        → false
-✅ checkDangerousProps     → false
-✅ isSystemPartitionRW     → false
-✅ checkSELinuxStatus      → false
-✅ isEnvironmentSuspect    → false
-```
 
-</td>
-<td width="50%" valign="top">
+| Method | Result |
+|--------|--------|
+| `performSecurityCheck` | Clean |
+| `checkRootBinaries` | `false` |
+| `checkRootPackages` | `false` |
+| `checkSuExistence` | `false` |
+| `checkDangerousProps` | `false` |
+| `isSystemPartitionReadWrite` | `false` |
+| `checkSELinuxStatus` | `false` |
+| `isEnvironmentSuspect` | `false` |
 
 ### 🕵️ Frida Detection Bypass
-```
-✅ checkFridaProcesses     → false
-✅ checkFridaPorts         → false
-✅ checkFridaArtifacts     → false
-✅ String.contains hooks   → Active
-✅ /proc/net/tcp filter    → Active
-✅ Runtime.exec intercept  → Active
-```
 
-</td>
-</tr>
-</table>
+| Method | Result |
+|--------|--------|
+| `checkFridaProcesses` | `false` |
+| `checkFridaPorts` | `false` |
+| `checkFridaArtifacts` | `false` |
+| `String.contains` hooks | Active |
+| `/proc/net/tcp` filter | Active |
+| `Runtime.exec` intercept | Active |
 
 ---
 
 ## 🛡️ SSL Pinning Bypass
 
-<table>
-<tr>
-<td width="33%" align="center">
-
-**OkHttp3**
-<br/>
-<code>CertificatePinner</code>
-<br/>
-<code>check$okhttp</code>
-<br/>
-<code>OkHostnameVerifier</code>
-
-</td>
-<td width="33%" align="center">
-
-**Android Platform**
-<br/>
-<code>TrustManagerImpl</code>
-<br/>
-<code>X509TrustManager</code>
-<br/>
-<code>SSLContext.init</code>
-
-</td>
-<td width="33%" align="center">
-
-**Custom Hooks**
-<br/>
-<code>HostnameVerifier</code>
-<br/>
-<code>WebViewClient</code>
-<br/>
-<code>FileInputStream</code>
-
-</td>
-</tr>
-</table>
+| Category | Hooks |
+|----------|-------|
+| **OkHttp3** | `CertificatePinner`, `check$okhttp`, `OkHostnameVerifier` |
+| **Android Platform** | `TrustManagerImpl`, `X509TrustManager`, `SSLContext.init` |
+| **Custom Hooks** | `HostnameVerifier`, `WebViewClient`, `FileInputStream` |
 
 ---
 
