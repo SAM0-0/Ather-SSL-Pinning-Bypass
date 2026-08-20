@@ -57,7 +57,7 @@ frida -U com.athermobileapp -l ather-bypass.js
 
 ## Console Output
 
-![Frida Bypass Screenshot](assets/bypass-screenshot.png)
+![Frida Bypass Screenshot](assets/1.png)
 
 ```
 ========================================
