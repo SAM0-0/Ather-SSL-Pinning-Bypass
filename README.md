@@ -74,6 +74,8 @@
 </svg>
 </div>
 
+<br>
+
 <div align="center">
 
 <!-- Badges -->
