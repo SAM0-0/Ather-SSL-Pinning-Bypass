@@ -72,6 +72,9 @@
     <animate attributeName="opacity" values="0;1;0" dur="1.5s" begin="0.6s" repeatCount="indefinite"/>
   </circle>
 </svg>
+</div>
+
+<div align="center">
 
 <!-- Badges -->
 <a href="https://frida.re">
