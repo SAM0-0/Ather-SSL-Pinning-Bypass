@@ -165,6 +165,25 @@ frida -U com.athermobileapp -l ather-bypass.js
 
 ---
 
+## 🌐 Proxy Setup — Cloudflare TLS Fix
+
+Cloudflare blocks Burp's default TLS — apply this fix once in Burp Suite:
+
+**Steps:**
+1. Open **Proxy settings**
+2. Go to **Network** → **TLS**
+3. Select **Use custom protocols and ciphers**
+4. In **TLS ciphers**, **disable the last 3 entries**
+5. **Save** — done
+
+<p align="center">
+  <img src="assets/2.png" alt="TLS ciphers to disable - last 3 entries" width="100%"/>
+  <br/>
+  <sub>Last 3 ciphers to disable</sub>
+</p>
+
+---
+
 ## 📸 Screenshot
 
 <div align="center">
